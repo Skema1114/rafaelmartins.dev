@@ -1,102 +1,42 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BusinessCardComponent } from './pages/src/lib/business-card/business-card.component';
+import { ProjectsListComponent } from './pages/src/lib/projects-list/projects-list.component';
+import { ConfigService } from './pages/src/services/config.service';
 
 @Component({
+  standalone: true,
+  imports: [
+    RouterModule,
+    CommonModule,
+    BusinessCardComponent,
+    ProjectsListComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  isFlipped = false;
+  private configService: ConfigService = Inject(ConfigService);
+
   isMobile = false;
-  isProjectsScreen = false;
-  projects = [
-    {
-      title: 'MOUNTAIN',
-      image:
-        'https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
-      tech: 'Angular',
-      description:
-        'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
-    },
-    {
-      title: 'LAKE',
-      image:
-        'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
-      tech: 'Angular',
-      description:
-        'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
-    },
-    {
-      title: 'OCEAN',
-      image:
-        'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
-      tech: 'Angular',
-      description:
-        'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
-    },
-    {
-      title: 'OCEAN',
-      image:
-        'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
-      tech: 'Angular',
-      description:
-        'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
-    },
-  ];
-
-  goBack(): void {
-    this.isProjectsScreen = false;
-  }
-
-  @ViewChild('tooltip') tooltip!: ElementRef;
 
   ngOnInit(): void {
+    const mobileValue = this.checkDispositive();
+    this.isMobile = mobileValue;
+    this.configService.setMobile(mobileValue);
+  }
+
+  checkDispositive(): boolean {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       )
     ) {
-      // true for mobile device
-      this.isMobile = true;
+      return true;
     } else {
-      // false for not mobile device
-      this.isMobile = false;
+      return false;
     }
-  }
-
-  showProjects() {
-    this.isProjectsScreen = true;
-  }
-
-  goBackProjects() {
-    this.isProjectsScreen = false;
-    this.isFlipped = false;
-  }
-
-  flipCard(flip: boolean): void {
-    this.isFlipped = flip;
-  }
-
-  showTooltip(): void {
-    this.tooltip.nativeElement.style.opacity = '1';
-  }
-
-  hideTooltip(): void {
-    this.tooltip.nativeElement.style.opacity = '0';
-  }
-
-  onMouseMove(event: MouseEvent): void {
-    const tooltip = this.tooltip.nativeElement;
-    tooltip.style.left = `${event.pageX + 10}px`;
-    tooltip.style.top = `${event.pageY + 10}px`;
-  }
-
-  flipCardNoParam(): void {
-    this.isFlipped = !this.isFlipped;
-    console.log('clicked ', this.isFlipped);
-  }
-
-  flipCardTest(): void {
-    this.isFlipped = this.isFlipped ? false : true;
   }
 }
