@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BusinessCardComponent } from './pages/src/lib/business-card/business-card.component';
 import { ProjectsListComponent } from './pages/src/lib/projects-list/projects-list.component';
-import { ConfigService } from './pages/src/services/config.service';
+import { ConfigService } from './services/config.service';
 
 @Component({
   standalone: true,

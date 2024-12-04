@@ -7,90 +7,71 @@
     (mouseleave)="hideTooltip()"
     (click)="!isMobile ? flipCard(!isFlipped) : ''"
   >
-    <!-- Front Side -->
+    <!-- === FRONT SIDE === -->
     <div class="card__side card__side--front">
       <div class="card__header">
         <img
-          src="https://via.placeholder.com/150"
+          src="/assets/image-profile.png"
           alt="Profile Picture"
           class="card__image"
         />
         <h1 class="card__name">Rafael Martins</h1>
-        <p class="card__role">Front-End Developer</p>
+        <p class="card__role">Front-end Developer</p>
         <p class="card__quote">
-          "Creating digital experiences that inspire and innovate."
+          "Don't tell me the sky's the limit when there are footprints on the
+          moon"
         </p>
       </div>
       <div class="card__summary">
         <p>
-          Passionate about building impactful solutions with cutting-edge
-          technologies. Specializing in Angular and modern web development.
+          Bacharel em Sistemas de Informação pelo Instituto Federal
+          Farroupilha/RS, Técnico em Informática pelo SENAC/RS e Montador e
+          Reparador de Computador pelo SENAC/RS.
         </p>
       </div>
     </div>
 
-    <!-- Back Side -->
+    <!-- === BACK SIDE === -->
     <div class="card__side card__side--back">
       <div class="card__content">
         <div class="card__section card__section--skills">
-          <h3 class="card__title">Skills & Technologies</h3>
+          <h3 class="card__title">TECNOLOGIAS</h3>
           <div class="card__badges">
-            <span>JavaScript</span>
-            <span>Angular</span>
-            <span>React</span>
-            <span>Node.js</span>
-            <span>SCSS</span>
-            <span>Docker</span>
+            @for (item of technologies; track $index) {
+            <span>{{ item }}</span>
+            }
           </div>
         </div>
 
         <div class="card__section card__section--contact">
-          <h3 class="card__title">Contact</h3>
+          <h3 class="card__title">CONTATOS</h3>
           <ul class="card__contact">
             <li>
-              <a href="mailto:rafael@example.com">rafaelexample.com</a>
+              <a [href]="contact.linkedIn" target="_blank">LinkedIn</a>
             </li>
-            <li>+55 99 99999-9999</li>
             <li>
-              <a href="https://github.com/rafaelmartins" target="_blank"
-                >github.com/rafaelmartins</a
-              >
+              <a [href]="contact.github" target="_blank">GitHub</a>
+            </li>
+            <li>
+              <a href="mailto:{{ contact.email }}">
+                {{ contact.email }}
+              </a>
             </li>
           </ul>
         </div>
 
-        <div class="card__section card__section--contact">
-          <h3 class="card__title">Contact</h3>
-          <ul class="card__contact">
-            <li>
-              <a href="mailto:rafael@example.com">rafaelexample.com</a>
-            </li>
-            <li>+55 99 99999-9999</li>
-            <li>
-              <a (click)="showProjects()">VER PROJETOS</a>
-            </li>
-          </ul>
-        </div>
+        <button (click)="showProjects()">Ver projetos</button>
       </div>
     </div>
 
-    <!-- Navigation Buttons (for mobile) -->
     <div class="card__nav-buttons">
-      <!-- <button class="card__nav-btn" (click)="flipCard(false)">Back</button>
-      <button
-        class="card__nav-btn card__nav-btn--flip"
-        (click)="flipCard(true)"
-      >
-        Next
-      </button> -->
-
       <button
         class="card__nav-btn card__nav-btn--flip"
         (click)="flipCard(!isFlipped)"
       >
-        Flip
+        Virar
       </button>
     </div>
   </div>
-  <div class="tooltip" #tooltip>Click to flip!</div>
+  <div class="tooltip" #tooltip>Virar cartão?</div>
 </div>

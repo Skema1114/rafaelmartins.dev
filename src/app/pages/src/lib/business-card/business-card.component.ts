@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { ConfigService } from '../../services/config.service';
+import { ContactModel } from '../../../../models/ContactModel';
+import { ConfigService } from '../../../../services/config.service';
 
 @Component({
   selector: 'business-card',
@@ -15,6 +16,8 @@ export class BusinessCardComponent {
   isFlipped = false;
   isMobile = false;
   isProjectScrn = false;
+  technologies!: string[];
+  contact!: ContactModel;
   @ViewChild('tooltip') tooltip!: ElementRef;
 
   ngOnInit() {
@@ -29,6 +32,8 @@ export class BusinessCardComponent {
     this.configService.isMobile$?.subscribe((value: boolean) => {
       this.isMobile = value;
     });
+
+    this.mountStrings();
   }
 
   showProjects(): void {
@@ -52,5 +57,24 @@ export class BusinessCardComponent {
   onMouseMove(event: MouseEvent): void {
     this.tooltip.nativeElement.style.left = `${event.pageX + 10}px`;
     this.tooltip.nativeElement.style.top = `${event.pageY + 10}px`;
+  }
+
+  mountStrings(): void {
+    this.technologies = [
+      'Angular',
+      'Java',
+      'Javascript',
+      'Typescript',
+      'HTML',
+      'CSS',
+      'Git',
+      'GitHub',
+    ];
+
+    this.contact = {
+      linkedIn: 'https://www.linkedin.com/in/rafaelarandamartins/',
+      github: 'https://github.com/Skema1114',
+      email: 'rafaelmartins.dev@outlook.com',
+    };
   }
 }

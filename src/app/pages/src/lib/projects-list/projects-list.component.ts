@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ProjectModel } from '../../models/ProjectModel';
-import { ConfigService } from '../../services/config.service';
+import { ProjectModel } from '../../../../models/ProjectModel';
+import { ConfigService } from '../../../../services/config.service';
 
 @Component({
   selector: 'projects-list',
