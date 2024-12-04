@@ -163,8 +163,10 @@ body {
             }
           }
 
-          &--contact {
-            .card__contact {
+          &--contact,
+          &--projects {
+            .card__contact,
+            .card__project {
               list-style: none;
               padding: 0;
               display: flex;
@@ -172,7 +174,7 @@ body {
               gap: 0.8rem;
 
               li {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
 
                 a {
                   color: lighten($color-primary, 20%);
