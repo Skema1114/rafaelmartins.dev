@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ProjectModel } from '../../../../models/ProjectModel';
-import { ConfigService } from '../../../../services/config.service';
+import { ProjectModel } from '@rafaelmartins.dev/models';
+import { ConfigService } from '@rafaelmartins.dev/services';
 
 @Component({
   selector: 'projects-list',
@@ -60,6 +60,22 @@ export class ProjectsListComponent implements OnInit {
         title: 'LAKE',
         image:
           'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
+        tech: 'Angular',
+        description:
+          'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
+      },
+      {
+        title: 'OCEAN',
+        image:
+          'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
+        tech: 'Angular',
+        description:
+          'Good tools make application development quicker and easier to maintain than if you did everything by hand.',
+      },
+      {
+        title: 'OCEAN',
+        image:
+          'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb',
         tech: 'Angular',
         description:
           'Good tools make application development quicker and easier to maintain than if you did everything by hand.',

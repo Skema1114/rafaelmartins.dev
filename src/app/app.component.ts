@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BusinessCardComponent } from './pages/src/lib/business-card/business-card.component';
-import { ProjectsListComponent } from './pages/src/lib/projects-list/projects-list.component';
-import { ConfigService } from './services/config.service';
+import {
+  BusinessCardComponent,
+  ProjectsListComponent,
+} from '@rafaelmartins.dev/pages';
+import { ConfigService } from '@rafaelmartins.dev/services';
 
 @Component({
   standalone: true,

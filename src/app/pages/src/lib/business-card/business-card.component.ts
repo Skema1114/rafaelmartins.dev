@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { ContactModel } from '../../../../models/ContactModel';
-import { ConfigService } from '../../../../services/config.service';
+import { ContactModel } from '@rafaelmartins.dev/models';
+import { ConfigService } from '@rafaelmartins.dev/services';
 
 @Component({
   selector: 'business-card',
